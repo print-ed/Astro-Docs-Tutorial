@@ -1,9 +1,12 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import BlogPost from "../components/BlogPost.astro";
+
+// Get all posts
 const allPosts = Object.values(
   await import.meta.glob("./posts/*.md", { eager: true })
 );
+
 const pageTitle = "My Astro Learning Blog";
 ---
 
@@ -12,6 +15,7 @@ const pageTitle = "My Astro Learning Blog";
   <p>This is where I will post about my journey learning Astro.</p>
   <ul>
     {
+      // Map through the posts and display the title and url
       allPosts.map((post: any) => (
         <BlogPost url={post.url} title={post.frontmatter.title} />
       ))

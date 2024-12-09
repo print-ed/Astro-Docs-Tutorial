@@ -7,13 +7,16 @@ const { frontmatter } = Astro.props;
   <head>
     <meta charset="utf-8" />
   </head>
+  <!-- Format the publication date -->
   <p>{frontmatter.pubDate.toString().slice(0, 10)}</p>
+  <!-- description -->
   <p><em>{frontmatter.description}</em></p>
-
+  <!-- Written by: -->
   <p>Written by: {frontmatter.author}</p>
-
+  <!-- Add an image -->
   <img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
 
+  <!-- Map through an array of tags and display the specific tags related to the md post -->
   <div class="tags">
     {
       frontmatter.tags.map((tag: string) => (
@@ -26,6 +29,7 @@ const { frontmatter } = Astro.props;
   <slot />
 </BaseLayout>
 
+<!-- Styling -->
 <style>
   a {
     color: #00539f;

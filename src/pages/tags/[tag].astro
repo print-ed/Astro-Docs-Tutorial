@@ -3,14 +3,17 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import BlogPost from "../../components/BlogPost.astro";
 
 export async function getStaticPaths() {
+  // Get all tags from all posts
   const allPosts = Object.values(
     await import.meta.glob("../posts/*.md", { eager: true })
   );
 
+  // Get unique tags
   const uniqueTags = [
     ...new Set(allPosts.map((post: any) => post.frontmatter.tags).flat()),
   ];
 
+  // Create paths for each tag. This will create a page for each tag
   return uniqueTags.map((tag) => {
     const filteredPosts = allPosts.filter((post: any) =>
       post.frontmatter.tags.includes(tag)
@@ -22,6 +25,7 @@ export async function getStaticPaths() {
   });
 }
 
+// This function will get the data for each tag page
 const { tag } = Astro.params;
 const { posts } = Astro.props;
 ---
@@ -30,6 +34,7 @@ const { posts } = Astro.props;
   <p>Posts tagged with {tag}</p>
   <ul>
     {
+      // Map through the posts and display the title and url
       posts.map((post: any) => (
         <BlogPost url={post.url} title={post.frontmatter.title} />
       ))

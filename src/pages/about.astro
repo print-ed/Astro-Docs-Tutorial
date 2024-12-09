@@ -48,6 +48,7 @@ const textCase = "uppercase";
       I live in {identity.country} and I work as a {identity.occupation}.
     </li>
     {
+      // Check if the hobbies array has at least two items
       identity.hobbies.length >= 2 && (
         <li>
           Two of my hobbies are: {identity.hobbies[0]} and {identity.hobbies[1]}

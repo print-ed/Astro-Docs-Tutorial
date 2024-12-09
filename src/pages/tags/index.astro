@@ -1,10 +1,12 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
+// Get all posts
 const allPosts = Object.values(
   await import.meta.glob("../posts/*.md", { eager: true })
 );
 
+// Get unique tags
 const tags = [
   ...new Set(allPosts.map((post: any) => post.frontmatter.tags).flat()),
 ];
@@ -15,6 +17,7 @@ const pageTitle = "Tag Index";
 <BaseLayout pageTitle={pageTitle}>
   <div class="tags">
     {
+      // Map through the tags and display them
       tags.map((tag) => (
         <p class="tag">
           <a href={`/tags/${tag}`}>{tag}</a>
@@ -24,6 +27,7 @@ const pageTitle = "Tag Index";
   </div>
 </BaseLayout>
 
+<!-- Styling -->
 <style>
   a {
     color: #00539f;
