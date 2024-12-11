@@ -13,6 +13,7 @@ export async function getStaticPaths() {
     ...new Set(allPosts.map((post: any) => post.frontmatter.tags).flat()),
   ];
 
+// Build
   // Create paths for each tag. This will create a page for each tag
   return uniqueTags.map((tag) => {
     const filteredPosts = allPosts.filter((post: any) =>
