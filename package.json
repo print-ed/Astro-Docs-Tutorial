@@ -12,6 +12,10 @@
     "@astrojs/preact": "^4.0.0",
     "@astrojs/rss": "^4.0.10",
     "astro": "^5.0.3",
-    "preact": "^10.25.1"
+    "preact": "^10.25.1",
+    "tinacms": "^2.5.1"
+  },
+  "devDependencies": {
+    "@tinacms/cli": "^1.6.13"
   }
 }
